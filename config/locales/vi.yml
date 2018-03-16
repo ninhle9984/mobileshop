@@ -70,3 +70,4 @@ vi:
       create: Tạo %{model}
       submit: Lưu %{model}
       update: Cập nhật %{model}
+  edit: "Sửa"
