@@ -1,0 +1,11 @@
+en:
+  carts:
+    show:
+      invalid: "Giỏ không hợp lệ"
+  line_items:
+    creat:
+      error: "Lỗi"
+      added: "Đã thêm!"
+    destroy:
+      removed: "Đã xóa"
+      not_exist: "Item không tồn tại"
