@@ -1,4 +1,4 @@
-en:
+vi:
   carts:
     show:
       invalid: "Giỏ không hợp lệ"
@@ -9,3 +9,64 @@ en:
     destroy:
       removed: "Đã xóa"
       not_exist: "Item không tồn tại"
+  mobile_shop: "Cửa hàng điện thoại"
+  changing_password: "Chúng tôi đang liên hệ với bạn để thông báo cho bạn rằng email của bạn đang được thay đổi thành"
+  changed_password: "Chúng tôi đang liên hệ với bạn để thông báo cho bạn rằng email của bạn đã được thay đổi thành"
+  who_change_password: "Ai đó đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể thực hiện điều này thông qua liên kết bên dưới."
+  no_see_password: "Nếu bạn không yêu cầu điều này, vui lòng bỏ qua email này. Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập liên kết ở trên và tạo một mật khẩu mới."
+  new_password: "mật khẩu mới"
+  characters_minimum: "kí tự tối thiểu"
+  change_password: "Thay đổi mật khẩu"
+  sent_password: "Gửi mật khẩu"
+  wait_confirm: "hiện đang chờ xác nhận"
+  blank: "để trống nếu bạn không muốn thay đổi nó"
+  need_password: "chúng tôi cần mật khẩu hiện tại của bạn để xác nhận thay đổi của bạn"
+  update: "Cập nhật"
+  back: "Trở về"
+  sign_up: "Đăng kí"
+  submit: "Submit"
+  store: "Cửa hàng"
+  home: "Trang chủ"
+  admin: "Admin"
+  user: "Người dùng"
+  profile: "Cá nhân"
+  edit_profile: "Sửa thông tin cá nhân"
+  logout: "Đăng xuất"
+  log_in: "Đăng nhập"
+  errors: "Lỗi"
+  :password: "Mật khẩu"
+  :name: "Tên đăng nhập"
+  :email: "Email"
+  :address: "Địa chỉ"
+  :phone: "Số điện thoại"
+  :password_confirmation: "Xác nhận mật khẩu"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Có các lỗi sau: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Không thể xóa do tồn tại đối tượng phụ thuộc %{record}
+          has_many: Không thể xóa do tồn tại một số đối tượng phụ thuộc %{record}
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: phải được đồng ý
+      blank: không thể để trắng
+      present: cần phải để trắng
+      confirmation: không khớp với xác nhận
+      empty: không thể rỗng
+      inclusion: không có trong danh sách
+      invalid: không hợp lệ
+      not_a_number: không phải là số
+      not_an_integer: phải là một số nguyên
+      too_long: quá dài (tối đa %{count} ký tự)
+      too_short: quá ngắn (tối thiểu %{count} ký tự)
+      wrong_length: độ dài không đúng (phải là %{count} ký tự)
+      other_than: cần phải khác %{count}
+  helpers:
+    select:
+      prompt: Vui lòng chọn
+    submit:
+      create: Tạo %{model}
+      submit: Lưu %{model}
+      update: Cập nhật %{model}
