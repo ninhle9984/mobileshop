@@ -1,0 +1,36 @@
+<%= form_for order do |f| %>
+  <div class="form-group">
+    <div class="col-md-12">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+     <%= f.label :email %>
+     <%= f.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+     <%= f.label :address %>
+     <%= f.text_field :address, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+      <%= f.label :phone %>
+      <%= f.number_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+     <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>

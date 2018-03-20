@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :email
       t.integer :phone
-      t.integer :order_status
+      t.integer :order_status, default: 1
       t.references :user, foreign_key: true
 
       t.timestamps
