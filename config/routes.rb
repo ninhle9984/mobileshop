@@ -3,5 +3,8 @@ Rails.application.routes.draw do
     resources :carts, only: %i(show destroy)
     resources :line_items, only: %i(index create destroy)
     post "/increase/:id", to: "line_items#index", as: :quantity
+    devise_for :users, controllers: { registrations: "registrations" }
+    resources :users
+    root "static_pages#home"
   end
 end
