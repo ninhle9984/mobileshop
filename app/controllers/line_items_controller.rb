@@ -22,14 +22,14 @@ class LineItemsController < ApplicationController
 
   def destroy
     item.destroy
-    redirect_to cart
+    redirect_to root_url
     flash[:notice] = t ".removed"
   end
 
   private
 
   def find_item
-    @item = Item.find_by id: params[:id]
+    @item = LineItem.find_by id: params[:id]
 
     return if item
     root_url root_url
