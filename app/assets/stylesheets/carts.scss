@@ -1,9 +1,496 @@
-.carts {
-	.item_price, .total_line {
-    text-align: right;
+@import 'bootstrap-sprockets';
+@import 'bootstrap'  ;
+$brand-default: #b0bec5;
+$brand-primary: #2196f3;
+$brand-secondary: #323a45;
+$brand-success: #7ec855;
+$brand-warning: #ffd600;
+$brand-info: #29b6f6;
+$brand-danger: #ef1c1c;
+$bg-light-gray: #f5f5f5;
+$heading-color: #333;
+$text-color: #444;
+$white-body: #f8f8f8;
+$white-default: #fff;
+$white-side: #ececec;  
+$black-side: rgba(0, 0, 0, .15);
+
+body {
+  background: $white-body;
 }
-  .total_line .total_cell {
-  font-weight: bold;
-  border-top: 1px solid #595;
+
+a,
+button {
+  transition: all .4s ease;
+}
+
+.pdt-80 {
+  padding-top: 80px;
+}
+
+.pdb-80 {
+  padding-bottom: 80px;
+}
+
+// checkbox and radio button
+$font-checkbox: 'Ionicons' !default;
+$ion-ios-checkmark-empty: '\f3fd' !default;
+$checkbox-check: $ion-ios-checkmark-empty !default;
+
+@mixin checkbox-variant($parent, $color) {
+  #{$parent} input[type='checkbox']:checked+label,
+  #{$parent} input[type='radio']:checked+label {
+    &::before {
+      background-color: $color;
+      border-color: $color;
+   }
+
+    &::after {
+      color: $white-default;
+    }
   }
+
+  #{$parent} input[type='checkbox']:checked,
+  #{$parent} input[type='radio']:checked {
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:disabled+label {
+      cursor: not-allowed;
+
+      &::before {
+        background-color: $color;
+        border-color: $color;
+      }
+    }
+  }
+}
+
+.checkbox {
+  margin-bottom: 20px;
+  padding-left: 20px;
+
+  label {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.4;
+    padding-left: 5px;
+    position: relative;
+    vertical-align: middle;
+
+    &::before {
+      background-color: $white-default;
+      border: 1px solid $white-side;
+      border-radius: 0;
+      content: '';
+      cursor: pointer;
+      display: inline-block;
+      font-family: $font-checkbox;
+      height: 18px;
+      left: 0;
+      margin-left: -20px;
+      position: absolute;
+      width: 18px;
+  }
+
+    &::after {
+      color: $text-color;
+      cursor: pointer;
+      display: inline-block;
+      font-family: $font-checkbox;
+      font-size: 28px;
+      height: 18px;
+      left: 0;
+      line-height: 18px;
+      margin-left: -20px;
+      padding-left: 3px;
+      padding-top: 1px;
+      position: absolute;
+      top: 0;
+      width: 18px;
+    }
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+
+    &:checked+label::after {
+      content: $checkbox-check;
+      font-family: $font-checkbox;
+  }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:disabled+label {
+      color: lighten($text-color, 50%);
+      cursor: not-allowed;
+
+      &::before {
+        background-color: $brand-default;
+        border-color: $brand-default;
+        cursor: not-allowed;
+        opacity: .5;
+      }
+    }
+  }
+
+  &.checkbox-circle label::before {
+    border-radius: 50%;
+  }
+
+  &.checkbox-circle label::after {
+    font-size: 22px;
+    margin-left: -18px;
+  }
+
+  &.checkbox-inline {
+    margin-left: 0;
+    margin-right: .75rem;
+    margin-top: 0;
+
+    +.checkbox-inline {
+      margin-left: 0;
+      margin-right: .75rem;
+    }
+  }
+}
+
+@include checkbox-variant('.checkbox-primary', $brand-primary);
+@include checkbox-variant('.checkbox-secondary', $brand-secondary);
+@include checkbox-variant('.checkbox-danger', $brand-danger);
+@include checkbox-variant('.checkbox-info', $brand-info);
+@include checkbox-variant('.checkbox-warning', $brand-warning);
+@include checkbox-variant('.checkbox-success', $brand-success);
+input[type='checkbox'],
+input[type='radio'] {
+  margin-left: 0;
+
+  &.styled:checked+label::after {
+    content: $checkbox-check;
+    font-family: $font-checkbox;
+  }
+
+  .styled:checked+label {
+
+    &::before {
+      color: $white-default;
+    }
+
+    &::after {
+      color: $white-default;
+   }
+  }
+}
+
+.select-group {
+  display: block;
+  margin-bottom: 15px;
+  position: relative;
+
+  &::before {
+    content: '\f3d0';
+    font-family: 'Ionicons';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  select.form-control {
+    appearance: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding-right: 30px;
+  }
+}
+
+.uimax-block-section-26 {
+
+  .product-list {
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: table;
+    }
+
+    &::after {
+      clear: both;
+      content: '';
+      display: table;
+  }
+
+    .item {
+      float: left;
+      margin-bottom: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      position: relative;
+      width: 33.33333333333333%;
+    }
+
+  .pic-color {
+    bottom: 0;
+    line-height: 0;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 100%;
+    z-index: 5;
+
+    .pick {
+      border: 1px solid $white-side;
+      display: inline-block;
+      height: 15px;
+      transition: all .4s ease;
+      width: 15px;
+
+      &:hover {
+                transform: scale(1.1);
+              }
+
+      &.active {
+        transform: scale(1.2);
+        }
+    }
+  }
+
+    .product-item {
+      background: $white-default;
+      box-shadow: 0 3px 5px 0 $black-side;
+      overflow: hidden;
+      position: relative;
+
+      .pic-wrapper {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        &::before {
+          content: '';
+          display: block;
+          padding-top: 100%;
+        }
+
+        .inner {
+          bottom: 0;
+          display: block;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          transition: all .6s ease;
+
+          .pic {
+            height: 100%;
+            left: 50%;
+            position: absolute;
+            top: 0;
+            transform: translate(-50%, 0);
+            width: auto;
+          }
+        }
+    }
+
+      .product-desc {
+        padding: 15px;
+        text-align: center;
+
+        .name {
+          color: $brand-secondary;
+          font-family: 'Roboto Slab', serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+          margin-bottom: 10px;
+
+          a {
+            color: $brand-secondary;
+
+            &:hover {
+              color: $brand-primary;
+              }
+          }
+        }
+
+        .price {
+          color: $brand-danger;
+          display: inline-block;
+          font-weight: 700;
+          margin-right: 10px;
+        }
+
+        .old-price {
+          color: lighten($brand-secondary, 10%);
+          display: inline-block;
+          text-decoration: line-through;
+        }
+      }
+
+      .sale {
+        background: $brand-danger;
+        border-radius: 2px 0 0 2px;
+        color: $white-default;
+        display: inline-block;
+        font-size: 10px;
+        left: 15px;
+        line-height: 1;
+        padding: 5px 10px;
+        position: absolute;
+        text-transform: uppercase;
+        top: 15px;
+
+        &::after {
+          border-color: transparent transparent transparent $brand-danger;
+          border-style: solid;
+          border-width: 10px 0 10px 6px;
+          content: '';
+          height: 0;
+          left: 100%;
+          position: absolute;
+          top: 0;
+          width: 0;
+          }
+      }
+
+      .btn-add-cart {
+        background: $white-default;
+        border: 1px solid $brand-secondary;
+        border-radius: 50%;
+        color: $brand-secondary;
+        display: inline-block;
+        font-size: 0;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        position: absolute;
+        right: 15px;
+        text-align: center;
+        top: 15px;
+        transform: translate(60px, 0);
+        transition: all .3s ease;
+        width: 30px;
+
+        &::before {
+          content: '\f3f8';
+          font-family: 'Ionicons';
+          font-size: 18px;
+        }
+
+        &:hover,
+        &.active {
+          border-color: $brand-primary;
+          color: $brand-primary;
+          }
+      }
+
+
+      &:hover {
+
+        .pic-wrapper {
+          .inner {
+            transform: scale(1.3);
+          }
+        }
+
+        .btn-add-cart,
+        .btn-wishlist {
+          transform: translate(0, 0);
+          }
+      }
+    }
+  }
+
+  .form-search {
+    margin-bottom: 15px;
+    position: relative;
+
+    .form-control {
+      border-radius: 0;
+      box-shadow: none;
+      margin-bottom: 0;
+      padding-right: 35px;
+    }
+
+    .btn-search {
+      background: transparent;
+      border-radius: 0;
+      color: $brand-secondary;
+      height: 34px;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 34px;
+
+      &:hover {
+        color: $brand-primary;
+        }
+      }
+  }
+
+  .categories-list {
+
+    .list {
+      margin-bottom: 0;
+
+      >li {
+
+        >a {
+          color: $brand-secondary;
+          display: block;
+          padding: 5px 0;
+
+          &:hover {
+            color: $brand-primary;
+           }
+          }
+        }
+      }
+  }
+
+  .product-filter {
+
+    .block {
+      margin-bottom: 40px;
+
+      >.title {
+        color: $brand-secondary;
+        font-weight: 700;
+        margin-bottom: 15px;
+        padding: 0 0 5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.block {
+  >.title {
+    border-top: 1px solid $white-side;
+    padding: 5px 0;
+    }
+}
+
+.uimax-sidebar {
+  background: $white-default;
+  box-shadow: 0 3px 5px 0 $black-side;
+  margin-bottom: 80px;
+  padding: 30px;
+}
+
+.box {
+  min-height: 500px;
 }

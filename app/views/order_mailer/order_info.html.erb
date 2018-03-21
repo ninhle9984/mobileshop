@@ -1,0 +1,10 @@
+<h1>Hi <%= @order.name %></h1>
+
+<p>
+Thank you for your recent order from The Pragmatic Store.
+You ordered the following items:
+<%= @order.line_items.each do  |item|%>
+ <%= item.name %> X <%= item.quantity %>
+<% end %>
+We'll send you a separate e-mail when your order ships.
+</p>
