@@ -18,6 +18,8 @@ end
  gem "devise"
  gem "config"
  gem "ckeditor"
+ gem "jquery-rails"
+ gem "ransack"
 
 group :development, :test do
  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -37,7 +39,6 @@ group :development, :test do
  gem "reek"
  gem "railroady"
  gem "autoprefixer-rails"
- gem "jquery-rails"
  gem "jquery-turbolinks"
  gem "will_paginate"
  gem "bcrypt"
