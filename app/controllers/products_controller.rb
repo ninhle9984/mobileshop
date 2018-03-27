@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
   attr_reader :product
 
-  before_action :find_product, only: %i(show index)
+  before_action :find_product, only: :show
   before_action :all_brands, only: %i(index show)
 
-  def index; end
+  def index
+    @products = Product.desc.paginate page: params[:page],
+      per_page: Settings.per_page
+  end
 
   def show; end
 

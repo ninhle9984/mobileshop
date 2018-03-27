@@ -47,7 +47,7 @@ en:
   edit_brand: "Edit brand"
   all_brands: "All Brands"
   new_brand: "New brand"
-  brand: "Brand"
+  :brand: "Brand"
   hello: "hello"
   Copyright: "Copyright 2018"
   :name_product: "Product name"
@@ -92,3 +92,12 @@ en:
   order_total: "Total payment"
   quantity: "quantity"
   edit: "Edit"
+  carts: "Carts: "
+  number:
+    currency:
+      format:
+        unit: "VNĐ"
+        delimiter: ","
+        separator: "."
+        precision: 0
+        format: "%n%u"

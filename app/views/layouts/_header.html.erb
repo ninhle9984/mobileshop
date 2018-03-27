@@ -36,6 +36,19 @@
           <li><%= link_to t("sign_up"), new_user_registration_path %></li>
           <li><%= link_to t("log_in"), new_user_session_path %></li>
         <% end %>
+        <% if cart_size %>
+          <li>
+            <%= link_to cart_path(session[:cart_id]) do %>
+              <%= t "carts" %><%= cart_size %>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to t("carts"), "#" %>
+          </li>
+        <% end %>
+        <li><%= link_to t("layouts.application.en"), locale: :en %></li>
+        <li><%= link_to t("layouts.application.vi"), locale: :vi %></li>
       </ul>
     </nav>
   </div>

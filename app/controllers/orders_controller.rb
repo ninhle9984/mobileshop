@@ -11,10 +11,11 @@ class OrdersController < ApplicationController
   def create
     @order =
       if current_user
-        current_cart.orders.build order_params
+        current_user.orders.build order_params
       else
         Order.new order_params
       end
+
     order.add_line_items_from_cart cart
 
     return create_success if order.save

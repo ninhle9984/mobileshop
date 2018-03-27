@@ -110,3 +110,20 @@ vi:
   information: "Thông tin thanh toán"
   order_total: "Tổng thanh toán"
   quantity: "Số lượng"
+  carts: "Giỏ hàng"
+  number:
+    currency:
+      format:
+        unit: "VNĐ"
+        delimiter: ","
+        separator: "."
+        precision: 0
+        format: "%n%u"
+  status: "Trạng thái"
+  total: "Tổng tiền"
+  by: "bởi"
+  remove_all_product: "Xóa tất cả sản phẩm ở giỏ hàng"
+  checkout: "Thanh toán"
+  checkout_form: "Form thanh toán"
+  are_you_sure: "Bạn có chắc? "
+  back_to_home_to_continue_shopping: "Trở về trang chủ để mua hàng"
