@@ -5,23 +5,21 @@ class OrdersController < ApplicationController
   before_action :ensure_cart_isnt_empty, only: :new
   before_action :find_order, only: %i(show update)
   before_action :find_line_item, only: %i(show edit)
+  before_action :create_order, only: :create
 
   def new
     @order = Order.new
   end
 
   def create
-    @order =
-      if current_user
-        current_user.orders.build order_params
-      else
-        Order.new order_params
-      end
-
     order.add_line_items_from_cart cart
 
-    return create_success if order.save
-    render :new
+    if order.save
+      create_success
+      create_notification order
+    else
+      render :new
+    end
   end
 
   def show
@@ -73,10 +71,23 @@ class OrdersController < ApplicationController
     flash[:notice] = t "empty"
   end
 
+  def create_order
+    @order = if current_user
+               current_user.orders.build order_params
+             else
+               Order.new order_params
+             end
+  end
+
   def create_success
     Cart.destroy session[:cart_id]
     session[:card_id] = nil
     redirect_to root_url
     flash[:success] = t "thank"
+  end
+
+  def create_notification order
+    Notifycation.create content: "new_order", order_url: order_path(order)
+    ActionCable.server.broadcast "notification_channel", message: "success"
   end
 end
