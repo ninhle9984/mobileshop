@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :products
       resources :brands
     end
-    root "static_pages#home"
+    root "static_pages#index"
     resources :orders
     post "orders/new", to: "orders#create"
     get :search, to: "searches#index"
