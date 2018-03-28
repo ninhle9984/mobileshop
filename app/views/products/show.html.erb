@@ -45,6 +45,12 @@
               </div>
             </div>
           </div>
+          <%= render partial: "comments/comment",
+            locals: {comments: @support_comment.comments,
+            product: @support_comment.product} %>
+          <%= will_paginate @support_comment.comments %>
+          <%= render "comments/new_comment", product: @product,
+            create_comment: @support_comment.create_comment %>
         </div>
       </div>
     </div>

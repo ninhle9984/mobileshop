@@ -9,7 +9,9 @@ class ProductsController < ApplicationController
       per_page: Settings.per_page
   end
 
-  def show; end
+  def show
+    @support_comment = SupportComment.new product: product, page: params[:page]
+  end
 
   private
 

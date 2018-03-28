@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <h2 class="form-signin-heading">
+    <%= t "compose_new_micropost" %>
+  </h2>
+  <%= form_for [product, create_comment] do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="field">
+      <%= f.text_area :description, placeholder: t("compose_new_micropost") %>
+    </div>
+    <%= f.submit t("post_comment"), class: "btn btn-primary" %>
+  <% end %>
+<% end %>
