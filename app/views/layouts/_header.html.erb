@@ -13,7 +13,7 @@
         <li><%= link_to t("home"), root_path %></li>
         <% if user_signed_in? %>
           <% if current_user && current_user.admin? %>
-            <li><%= link_to t("admin"), admin_path %></li>
+            <li><%= link_to t("admin"), admin_static_pages_path %></li>
             <li class="dropdown">
               <%= button_tag "#", class: "btn btn-primary dropdown-toggle",
                 data: {toggle: "dropdown"} do %>
