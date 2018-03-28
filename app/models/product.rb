@@ -9,5 +9,6 @@ class Product < ApplicationRecord
   validates :percent, numericality: {only_integer: true}
   validates :price, presence: true, numericality: {only_integer: true}
   validates :description, presence: true
+
   scope :desc, ->{order created_at: :desc}
 end
