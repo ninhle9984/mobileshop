@@ -9,10 +9,4 @@ class SearchesController < ApplicationController
       format.json{products}
     end
   end
-
-  private
-
-  def force_json
-    request.format = :json
-  end
 end

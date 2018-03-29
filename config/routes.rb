@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications, only: %i(index update)
   scope "(:locale)", locale: /en|vi/ do
     resources :carts, only: %i(show destroy)
     resources :line_items
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
     post "orders/new", to: "orders#create"
     get :search, to: "searches#index"
     resources :products
+    mount ActionCable.server, at: "/cable"
   end
 end

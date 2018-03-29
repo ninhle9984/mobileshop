@@ -14,6 +14,15 @@
         <% if user_signed_in? %>
           <% if current_user && current_user.admin? %>
             <li><%= link_to t("admin"), admin_path %></li>
+            <li class="dropdown">
+              <%= button_tag "#", class: "btn btn-primary dropdown-toggle",
+                data: {toggle: "dropdown"} do %>
+                <span id="notify-count">0</span>
+              <% end %>
+              <ul class="dropdown-menu scrollable-menu" role="menu"
+                id="notify-list">
+              </ul>
+            </li>
           <% end %>
           <li><%= link_to t("profile_order"), current_user %></li>
           <li><%= link_to t("edit_profile"),

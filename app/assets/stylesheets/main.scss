@@ -7,6 +7,8 @@
   box-sizing: border-box;
 }
 
+$lighter-gray: rgba(0, 0, 0, 0);
+
 //miscellaneous
 
 body {
@@ -131,8 +133,8 @@ error-explanation {
 }
 
 .mini-submenu {
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(0, 0, 0, .9);
+  background-color: $lighter-gray;
+  border: 1px solid $lighter-gray;
   border-radius: 4px;
   display: none;
   padding: 9px;
