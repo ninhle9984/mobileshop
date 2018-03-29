@@ -12,40 +12,30 @@
         </li>
         <li><%= link_to t("home"), root_path %></li>
         <% if user_signed_in? %>
-          <% if current_user.try(:admin?) %>
-            <li><%= link_to t("admin"), "" %></li>
-            <li><%= link_to t("user"), "" %></li>
+          <% if current_user && current_user.admin? %>
+            <li><%= link_to t("admin"), admin_path %></li>
           <% end %>
-          <li class="dropdown">
-            <%= link_to "#", class: "dropdown-toggle",
-              data: {toggle: "dropdown"} do %>
-              <%= t("profile") %><b class="caret"></b>
-            <% end %>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("profile"), current_user %></li>
-              <li><%= link_to t("edit_profile"),
-                edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to t("logout"),
-                  destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
+          <li><%= link_to t("profile_order"), current_user %></li>
+          <li><%= link_to t("edit_profile"),
+            edit_user_registration_path %></li>
+          <li>
+            <%= link_to t("logout"),
+              destroy_user_session_path, method: :delete %>
           </li>
+          <% if cart_size %>
+            <li>
+              <%= link_to cart_path(session[:cart_id]) do %>
+                <%= t "carts_size" %><%= cart_size %>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to t("carts_size"), "#" %>
+            </li>
+          <% end %>
         <% else %>
           <li><%= link_to t("sign_up"), new_user_registration_path %></li>
           <li><%= link_to t("log_in"), new_user_session_path %></li>
-        <% end %>
-        <% if cart_size %>
-          <li>
-            <%= link_to cart_path(session[:cart_id]) do %>
-              <%= t "carts" %><%= cart_size %>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to t("carts"), "#" %>
-          </li>
         <% end %>
         <li><%= link_to t("layouts.application.en"), locale: :en %></li>
         <li><%= link_to t("layouts.application.vi"), locale: :vi %></li>
