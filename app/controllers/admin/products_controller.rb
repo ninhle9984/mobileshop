@@ -1,23 +1,67 @@
 module Admin
   class ProductsController < Admin::BaseController
-    attr_reader :product
+    before_action :find_product, only: %i(show edit update destroy)
+    before_action :find_brand, only: :new
 
-    before_action :find_product, only: %i(show)
-    before_action :brands, only: %i(index show)
-    before_action :paginate_product, only: %i(index)
+    def index
+      @products = Product.desc.paginate page: params[:page],
+        per_page: Settings.per_page
+    end
 
-    def index; end
+    def new
+      @product =
+        if brand
+          brand.products.new
+        else
+          @product = Product.new
+        end
+    end
+
+    def create
+      @product = Product.new product_params
+
+      if product.save
+        flash[:success] = t "product_created"
+        redirect_to admin_products_url
+      else
+        render :new
+      end
+    end
 
     def show; end
 
-    private
+    def edit; end
 
-    def brands
-      @brands = Brand.desc.all
+    def update
+      if product.update_attributes product_params
+        flash[:success] = t "product_updated"
+        redirect_to admin_products_url
+      else
+        render :edit
+      end
     end
 
-    def paginate_product
-      @products = Product.desc.paginate page: params[:page]
+    def destroy
+      product.destroy
+      flash[:success] = t "product_deleted"
+      redirect_to request.referer || root_url
+    end
+
+    private
+
+    attr_reader :product, :brand
+
+    def find_brand
+      @brand = Brand.find_by id: params[:brand_id]
+
+      return if brand
+      flash[:success] = t "failed_product"
+      redirect_to root_path
+    end
+
+    def product_params
+      params.require(:product).permit :available, :name,
+        :description, :image, :price, :brand_id, :coupon, :count, :percent
     end
 
     def find_product
