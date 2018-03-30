@@ -1,4 +1,8 @@
 en:
+  layouts:
+    application:
+      en: "English"
+      vi: "Vietnamese"
   carts:
     show:
       invalid: "Cart invalid"
@@ -30,7 +34,7 @@ en:
   admin: "Admin"
   user: "User"
   profile: "Profile"
-  edit_profile: "Edit profile"
+  edit_profile: "Edit Profile"
   logout: "Logout"
   log_in: "login"
   errors: "errors"
@@ -81,8 +85,6 @@ en:
   Stock: "In Stock"
   out_of_stock: "Out of stock"
   price: "Price: "
-  profile: "profile"
-  edit_profile: "edit profile"
   logout: "Logout"
   log_in: "login"
   errors: "errors"
@@ -92,7 +94,7 @@ en:
   order_total: "Total payment"
   quantity: "quantity"
   edit: "Edit"
-  carts: "Carts: "
+  carts_size: "Carts: "
   number:
     currency:
       format:
@@ -101,3 +103,45 @@ en:
         separator: "."
         precision: 0
         format: "%n%u"
+  profile: "Profile"
+  carts_empty: "Carts: 0"
+  product: "Product"
+  compose_new_micropost: "Create new a comment"
+  post_comment: "Post comment"
+  time:
+    formats:
+      default: "%d-%m-%Y %H: %M"
+  :current_password: "Current password"
+  time_buy: "Time buyed"
+  select: "Select"
+  cancelled: "cancelled"
+  processing: "processing"
+  delivered: "delivered"
+  :order: "Order"
+  select: "Select"
+  overview: "Overview"
+  users: "Users"
+  brands: "Brands"
+  products: "Products"
+  latest_users: "Latest users"
+  joined: "Join"
+  dashboard: "Dashboard"
+  manage_your_site: "Site Management"
+  manage_order: "Order Management"
+  option: "Option"
+  delete: "Delete"
+  add_new_product: "Add new product"
+  add_new_brand: "Add a new brand"
+  name_order: "Order Name"
+  detail: "Detail"
+  total_price: "Total Money"
+  show_order: "View Detail"
+  comment_created: "Comment created"
+  comment_failed: "Create comment failed"
+  comment_deleted: "Comment deleted"
+  ago: " ago"
+  added: "Add products"
+  create_error: "Add product failed"
+  removed: "Removed all products"
+  not_exist: "Products not exist"
+  quest: "Quest"
