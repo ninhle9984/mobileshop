@@ -11,8 +11,8 @@
           method: :delete, data: {confirm: t("are_you_sure?")} do %>
           <i class="fa fa-trash-o fa-fw"></i>
         <% end %>
-        <p><%= sanitize comment.description.html_safe %></p>
       <% end %>
+      <p><%= sanitize comment.description.html_safe %></p>
     </p>
   </div>
 <% end %>
