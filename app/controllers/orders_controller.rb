@@ -3,16 +3,17 @@ class OrdersController < ApplicationController
   before_action :find_order, only: %i(show update)
   before_action :find_order_product_code, only: :edit
   before_action :create_order, only: :create
+  before_action :find_coupon, only: %i(new create)
 
   def new
-    cart.line_items.empty? ? redirect_to(root_path) : (@order = Order.new)
+    @support_order = SupportOrder.new session[:coupon_code]
   end
 
   def create
-    order.update_attributes product_code: generate
     order.add_line_items_from_cart cart
 
     if order.save
+      coupon.update_attributes imported: coupon.imported += 1
       create_success
       create_notification order
     else
@@ -42,7 +43,7 @@ class OrdersController < ApplicationController
   private
 
   attr_reader :cart, :order, :line_items, :line_item,
-    :generate, :order_product_code
+    :order_product_code, :coupon
 
   def current_order
     return if current_user.orders.find_by id: params[:id]
@@ -80,14 +81,13 @@ class OrdersController < ApplicationController
              else
                Order.new order_params
              end
-    @generate = (Settings.zero...Settings.eight)
-      .map{(Settings.generate + rand(Settings.rand)).chr}.join
+    order.coupon_code = session[:coupon_code]
   end
 
   def create_success
     Cart.destroy session[:cart_id]
-    session[:card_id] = nil
-    redirect_to root_url
+    clear_session
+    redirect_to root_path
     flash[:success] = current_user ? t("thank") : t("check")
   end
 
@@ -95,5 +95,10 @@ class OrdersController < ApplicationController
     ProductCodeMailer.product_code(order).deliver_now if current_user.blank?
     Notification.create content: "new_order", order_url: admin_order_path(order)
     ActionCable.server.broadcast "notification_channel", message: "success"
+  end
+
+  def clear_session
+    session.delete :coupon_code
+    session[:card_id] = nil
   end
 end

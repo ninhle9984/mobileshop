@@ -21,4 +21,11 @@ class ApplicationController < ActionController::Base
   def force_json
     request.format = :json
   end
+
+  def find_coupon
+    coupon = session[:coupon_code]
+
+    return unless coupon
+    @coupon = Coupon.find_by code: coupon
+  end
 end

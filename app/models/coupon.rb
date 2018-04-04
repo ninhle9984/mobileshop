@@ -9,6 +9,14 @@ class Coupon < ApplicationRecord
 
   scope :desc, ->{order created_at: :desc}
 
+  def unexpired?
+    expire ? expire > Time.zone.now : true
+  end
+
+  def unfull_import?
+    import ? import > imported : true
+  end
+
   private
 
   def invalid_expire_date

@@ -1,0 +1,59 @@
+<% if coupon %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h3><%= t "current" %></h3></td>
+    <td class="text-right">
+      <h3>
+        <strong>
+          <%= number_to_currency cart.total_price %>
+        </strong>
+      </h3>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h3><%= t "sale" %></h3></td>
+    <td class="text-right">
+      <h3>
+        <strong>
+          - <%= number_to_currency cart.sale_price coupon %>
+        </strong>
+      </h3>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h3><%= t "total" %></h3></td>
+    <td class="text-right">
+      <h3>
+        <strong>
+          <%= number_to_currency cart.remain_price coupon %>
+        </strong>
+      </h3>
+    </td>
+    <td></td>
+  </tr>
+<% else %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h3><%= t "total" %></h3></td>
+    <td class="text-right">
+      <h3>
+        <strong>
+          <%= number_to_currency cart.total_price %>
+        </strong>
+      </h3>
+    </td>
+    <td></td>
+  </tr>
+<% end %>

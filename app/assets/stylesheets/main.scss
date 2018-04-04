@@ -796,7 +796,22 @@ table {
 
 td,
 th {
-  border: 1px solid $white;
+  border: 1px solid $ddd;
   padding: 8px;
   text-align: center;
 }
+
+.invalid {
+  color: $red;
+  margin-bottom: 3px;
+  margin-left: -5px;
+}
+
+.success {
+  color: $green;
+}
+
+.ok-icon {
+  color: $green;
+}
+

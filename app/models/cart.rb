@@ -20,4 +20,12 @@ class Cart < ApplicationRecord
   def total_price
     line_items.to_a.sum(&:total_price)
   end
+
+  def remain_price coupon
+    total_price * (100 - coupon.percent) / 100
+  end
+
+  def sale_price coupon
+    total_price * coupon.percent / 100
+  end
 end
