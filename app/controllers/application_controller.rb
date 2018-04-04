@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include CurrentCart
 
   before_action :set_locale
+  before_action :current_cart
 
   class << self
     def default_url_options

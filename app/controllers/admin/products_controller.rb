@@ -55,8 +55,7 @@ module Admin
       @brand = Brand.find_by id: params[:brand_id]
 
       return if brand
-      flash[:success] = t "failed_product"
-      redirect_to root_path
+      Product.new
     end
 
     def product_params
