@@ -13,4 +13,8 @@ class SupportComment
   def create_comment
     @create_comment ||= product.comments.build
   end
+
+  def item_photos
+    @item_photos = product.item_photos
+  end
 end

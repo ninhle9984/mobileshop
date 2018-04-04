@@ -22,6 +22,8 @@ end
  gem "ransack"
  gem "faker"
  gem "bootstrap-will_paginate", "1.0.0"
+ gem "carrierwave"
+ gem "cocoon"
 
 group :development, :test do
  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -58,6 +60,11 @@ group :test do
  gem "simplecov-rcov", require: false
  gem "simplecov-json"
  gem "shoulda-matchers"
+end
+
+group :production do
+  gem "pg", "~> 0.18"
+  gem "rails_12factor", "0.0.2"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
