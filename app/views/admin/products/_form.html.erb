@@ -1,11 +1,11 @@
-<%= form_for [:admin, product] do |f| %>
+<%= form_for [:admin, product], html: {multipart: true} do |f| %>
   <%= render "shared/error_messages", object: f.object %>
 
   <%= f.label t :name_product %>
   <%= f.text_field :name, class: "form-control" %>
 
   <%= f.label t :available %>
-  <%= f.check_box :available %>
+  <%= f.check_box :available %><br />
 
   <%= f.label t :price %>
   <%= f.number_field :price, class: "form-control" %>
@@ -13,19 +13,29 @@
   <%= f.label t :description %>
   <%= f.cktext_area :description, placeholder: t("compose_new_micropost") %>
 
-  <%= f.label t :coupon %>
-  <%= f.text_field :coupon, class: "form-control" %>
+  <%= f.label :avatar %><br>
+  <%= f.file_field :image %><br />
 
-  <%= f.label t :count %>
-  <%= f.number_field :count, class: "form-control" %>
+  <% if f.object.image? %>
+    <%= image_tag f.object.image_url, class: "thumb" %>
+    <%= f.check_box :remove_image %><%= t "remove_avatar" %>
+  <% end %><br />
 
-  <%= f.label t :percent %>
-  <%= f.number_field :percent, class: "form-control" %>
+  <%= f.label :photo %><br />
+  <%= f.fields_for :item_photos do |p| %>
+    <div class="field">
+      <%= render "image_fields", f: p %>
+    </div>
+  <% end %>
 
-  <%= f.label :brand_id %>
+  <div class="links">
+    <%= link_to_add_association t("add_image"), f, :item_photos , partial: "image_fields" %>
+  </div>
+
+  <%= f.label :brand %><br />
   <%= f.select :brand_id,
     Brand.all.collect {|brand| [brand.name, brand.id]},
-    prompt: t("select") %>
+    prompt: t("select") %><br /><br />
 
   <%= f.submit class: "btn btn-primary" %>
   <% end %>

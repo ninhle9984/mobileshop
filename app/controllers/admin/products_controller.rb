@@ -13,7 +13,7 @@ module Admin
         if brand
           brand.products.new
         else
-          @product = Product.new
+          Product.new
         end
     end
 
@@ -22,7 +22,7 @@ module Admin
 
       if product.save
         flash[:success] = t "product_created"
-        redirect_to admin_products_url
+        redirect_to admin_products_path
       else
         render :new
       end
@@ -35,7 +35,7 @@ module Admin
     def update
       if product.update_attributes product_params
         flash[:success] = t "product_updated"
-        redirect_to admin_products_url
+        redirect_to admin_products_path
       else
         render :edit
       end
@@ -44,7 +44,7 @@ module Admin
     def destroy
       product.destroy
       flash[:success] = t "product_deleted"
-      redirect_to request.referer || root_url
+      redirect_to request.referer || root_path
     end
 
     private
@@ -61,7 +61,8 @@ module Admin
 
     def product_params
       params.require(:product).permit :available, :name,
-        :description, :image, :price, :brand_id, :coupon, :count, :percent
+        :description, :image, :price, :brand_id, :remove_image,
+        item_photos_attributes: %i(id product_id photo _destroy)
     end
 
     def find_product

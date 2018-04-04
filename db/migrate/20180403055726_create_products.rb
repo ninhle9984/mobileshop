@@ -7,9 +7,6 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :image
       t.integer :price
       t.references :brand, foreign_key: true
-      t.string :coupon
-      t.integer :count
-      t.integer :percent
 
       t.timestamps
     end

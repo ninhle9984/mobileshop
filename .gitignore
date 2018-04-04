@@ -28,3 +28,6 @@
 #Ignore file in .framgia-ci
 /.framgia-ci-result.temp.yml
 /.framgia-ci-reports
+
+# Ignore uploaded test images.
+/public/uploads
