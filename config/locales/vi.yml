@@ -236,3 +236,14 @@ vi:
   :submit: "Mua hàng"
   notification: "Thông báo"
   remove_from_cart: "Xóa khỏi giỏ hàng"
+  helpers:
+    label:
+      coupon:
+        code: "Mã giảm giá"
+        percent: "Phần trăm"
+        import: "Số lần nhập"
+        expire: "Ngày hết hạn"
+  admin:
+    coupons:
+      new:
+        create: "Tạo mã giảm giá"
