@@ -249,3 +249,7 @@ vi:
         create: "Tạo mã giảm giá"
   coupon_invalid: "Mã giảm giá không hợp lệ"
   coupon_success: "Áp dụng mã giảm giá thành công"
+  apply: "Áp dụng"
+  discout: "Nhập mã giảm giá"
+  current: "Tạm tính"
+  sale: "Giảm giá"

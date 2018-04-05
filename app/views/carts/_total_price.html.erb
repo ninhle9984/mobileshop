@@ -1,59 +1,47 @@
-<% if coupon %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><h3><%= t "current" %></h3></td>
-    <td class="text-right">
-      <h3>
+<table>
+  <tbody>
+    <tr class="order-total">
+      <th><%= t "current" %></th>
+      <td>
         <strong>
-          <%= number_to_currency cart.total_price %>
+          <span class="amount" id="cart_price">
+            <%= number_to_currency cart.total_price %>
+          </span>
         </strong>
-      </h3>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><h3><%= t "sale" %></h3></td>
-    <td class="text-right">
-      <h3>
-        <strong>
-          - <%= number_to_currency cart.sale_price coupon %>
-        </strong>
-      </h3>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><h3><%= t "total" %></h3></td>
-    <td class="text-right">
-      <h3>
-        <strong>
-          <%= number_to_currency cart.remain_price coupon %>
-        </strong>
-      </h3>
-    </td>
-    <td></td>
-  </tr>
-<% else %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><h3><%= t "total" %></h3></td>
-    <td class="text-right">
-      <h3>
-        <strong>
-          <%= number_to_currency cart.total_price %>
-        </strong>
-      </h3>
-    </td>
-    <td></td>
-  </tr>
-<% end %>
+      </td>
+    </tr>
+    <% if coupon %>
+      <tr class="order-total">
+        <th><%= t "sale" %></th>
+        <td>
+          <strong>
+            <span class="amount" id="cart_price">
+              - <%= number_to_currency cart.sale_price coupon %>
+            </span>
+          </strong>
+        </td>
+      </tr>
+      <tr class="order-total">
+        <th><%= t "total" %></th>
+        <td>
+          <strong>
+            <span class="amount" id="cart_price">
+              <%= number_to_currency cart.remain_price coupon %>
+            </span>
+          </strong>
+        </td>
+      </tr>
+    <% else %>
+      <tr class="order-total">
+        <th><%= t "total" %></th>
+        <td>
+          <strong>
+            <span class="amount" id="cart_price">
+              <%= number_to_currency cart.total_price %>
+            </span>
+          </strong>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

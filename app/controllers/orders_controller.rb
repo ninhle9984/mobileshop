@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     order.add_line_items_from_cart cart
 
     if order.save
-      coupon.update_attributes imported: coupon.imported += 1
+      coupon.update_attributes imported: coupon.imported += 1 if coupon
       create_success
       create_notification order
     else

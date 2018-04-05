@@ -321,6 +321,7 @@ body {
 .footer-bottom-area {
   background: none repeat scroll 0 0 $black;
   color: $white;
+  margin-top: 100px;
   padding-bottom: 40px;
 
   a {
@@ -815,3 +816,7 @@ th {
   color: $green;
 }
 
+.fixed-footer-bottom {
+  margin-bottom: 200px;
+  overflow: hidden;
+}
