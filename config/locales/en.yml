@@ -165,3 +165,16 @@ en:
   products_of: "Products of "
   remove_from_cart: "Remove from cart"
   new_order: "New order"
+  helpers:
+    label:
+      coupon:
+        code: "Code"
+        percent: "Percent"
+        import: "Number of import"
+        expire: "Expire Date"
+  admin:
+    coupons:
+      new:
+        create: "Create new coupon"
+  invalid_coupon: " must has expire date or limit import"
+  coupon_manager: "Coupon manager"

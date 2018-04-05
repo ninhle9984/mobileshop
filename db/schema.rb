@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403055726) do
+ActiveRecord::Schema.define(version: 20180403053603) do
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20180403055726) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "code"
+    t.integer "percent"
+    t.datetime "expire"
+    t.integer "import"
+    t.integer "imported", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_coupons_on_code", unique: true
   end
 
   create_table "line_items", force: :cascade do |t|
