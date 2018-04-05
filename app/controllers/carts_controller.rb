@@ -6,9 +6,8 @@ class CartsController < ApplicationController
   def show; end
 
   def destroy
-    cart.destroy
-    session[:cart_id] = nil
-    redirect_to root_url
+    cart.line_items.destroy_all
+    redirect_to root_path
   end
 
   private
@@ -18,7 +17,7 @@ class CartsController < ApplicationController
     current_cart = Cart.find_by id: session[:cart_id]
 
     return if cart && cart.current_cart?(current_cart)
-    redirect_to root_url
+    redirect_to root_path
     flash[:danger] = t ".invalid"
   end
 end
