@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  before_create :create_code
+
   belongs_to :user, optional: true
   has_many :line_items, dependent: :destroy
 
@@ -20,5 +22,19 @@ class Order < ApplicationRecord
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  class << self
+    def generate_code
+      (Settings.zero...Settings.eight).map do
+        rand(Settings.random..Settings.generate).chr
+      end.join
+    end
+  end
+
+  private
+
+  def create_code
+    self.product_code = Order.generate_code
   end
 end

@@ -247,3 +247,5 @@ vi:
     coupons:
       new:
         create: "Tạo mã giảm giá"
+  coupon_invalid: "Mã giảm giá không hợp lệ"
+  coupon_success: "Áp dụng mã giảm giá thành công"

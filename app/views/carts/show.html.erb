@@ -53,6 +53,42 @@
               </td>
             </tr>
           <% end %>
+          <%= render "total_price", cart: @cart, coupon: @coupon %>
+          <tr>
+            <td>
+              <%= link_to @cart, method: :delete,
+                data: {confirm: t("are_you_sure")},
+                class: "btn btn-primary" do %>
+                <%= t "remove_all_product" %>
+              <% end %>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <%= link_to t("back_to_home_to_continue_shopping"),
+                  root_path %>
+              </button>
+            </td>
+            <td>
+              <div class="form-group has-feedback">
+                <%= text_field_tag :apply, session[:coupon_code],
+                  class: "form-control", id: "coupon-input" %>
+                <% if session[:coupon_code]%>
+                  <i class="glyphicon glyphicon-ok
+                    ok-icon form-control-feedback"></i>
+                <% end %>
+              </div>
+            </td>
+            <td>
+              <%= link_to new_order_path, method: :get,
+                class: "btn btn-success" do %>
+                <%= t "checkout" %>
+                <span class="glyphicon glyphicon-play"></span>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

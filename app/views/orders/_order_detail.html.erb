@@ -28,14 +28,49 @@
         </div>
       <% end %>
       <hr>
+    <div class="form-group"><hr /></div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <strong><%= t "current_total" %></strong>
+        <div class="pull-right">
+          <span><%= number_to_currency cart.total_price %></span>
+        </div>
+      </div>
+    </div>
+    <% if coupon %>
+      <div class="form-group"><hr /></div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <strong><%= t "order_sale" %></strong>
+          <div class="pull-right">
+            <span>
+              - <%= number_to_currency cart.sale_price coupon  %>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group"><hr /></div>
       <div class="form-group">
         <div class="col-xs-12">
           <strong><%= t "order_total" %></strong>
-            <div class="pull-right">
-              <span><%= number_to_currency cart.total_price %></span>
-            </div>
+          <div class="pull-right">
+            <span>
+              <%= number_to_currency cart.remain_price coupon %>
+            </span>
+          </div>
         </div>
       </div>
+    <% else %>
+      <div class="form-group"><hr /></div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <strong><%= t "order_total" %></strong>
+          <div class="pull-right">
+            <span><%= number_to_currency cart.total_price %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
