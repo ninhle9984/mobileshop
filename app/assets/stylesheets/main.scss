@@ -820,3 +820,24 @@ th {
   margin-bottom: 200px;
   overflow: hidden;
 }
+
+ul.scrollable-menu{
+  max-height:250px;
+  overflow:auto;
+}
+
+li.notify {
+  padding: 3px;
+  border: 0.5px solid $gray-color;
+  margin: 0.5px;
+}
+
+li.unread {
+  background-color: $unread;
+  border: 0.5px solid $gray-color;
+  margin: 0.5px;
+}
+
+li.unread a:hover {
+  background-color: $unread-hover;
+}

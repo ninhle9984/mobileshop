@@ -4,6 +4,7 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.string :content
       t.datetime :read_at
       t.string :order_url
+      t.boolean :readed, default: false
 
       t.timestamps
     end
