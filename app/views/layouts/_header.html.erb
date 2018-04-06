@@ -13,8 +13,8 @@
               <% if current_user && current_user.admin? %>
                 <li class="dropdown">
                   <%= button_tag "#", class: "btn btn-primary dropdown-toggle",
-                    data: {toggle: "dropdown"} do %>
-                    <%= t "notification" %>: <span id="notify-count">0</span>
+                    data: {toggle: "dropdown"}, id: "notify" do %>
+                    <i class="fa fa-bell"></i> <span id="notify-count">0</span>
                   <% end %>
                   <ul class="dropdown-menu scrollable-menu" role="menu"
                     id="notify-list">
@@ -68,7 +68,7 @@
             <% end %>
             <li>
               <%= form_with url: search_path, local: true, method: :get,
-                html: {class: "fom-inline my-2 my-lg-2"} do |f| %>
+                html: {class: "fom-inline my-2 my-lg-2"}, id: "search" do |f| %>
                 <%= f.text_field :q, data: {behavior: "autocomplete"},
                   class: "form-control mr-sm-2" %>
               <% end %>

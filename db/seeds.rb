@@ -22,3 +22,9 @@ end
   product.save
 end
 
+50.times do |n|
+  content = "new_order"
+  read_at = Time.zone.now
+  order_url = "#"
+  Notification.create content: content, read_at: read_at, order_url: order_url
+end

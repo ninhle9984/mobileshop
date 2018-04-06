@@ -10,7 +10,7 @@ $(document).on 'turbolinks:load', ->
   request_notification()
 
 $(document).on 'ready', ->
-  $('button').on 'click', ->
+  $('#notify').on 'click', ->
     $.ajax '/notifications/update',
     type: 'PUT'
     dataType: 'JSON'
@@ -23,6 +23,17 @@ request_notification = () ->
   dataType: 'JSON',
   success:(data) ->
     notifications = $.map data.notifications, (notify) ->
-      "<li><a href=#{notify.url}>#{notify.content}#{notify.time}</a></li>"
+      if notify.readed is true
+        "<li class='notify'>
+          <a href=#{notify.url} id=#{notify.id}>
+            #{notify.content} #{notify.time}
+          </a>
+        </li>"
+      else
+        "<li class='unread'>
+          <a href=#{notify.url} id=#{notify.id}>
+            #{notify.content} #{notify.time}
+          </a>
+        </li>"
     $('#notify-count').text(data.unread)
     $('#notify-list').html(notifications)
