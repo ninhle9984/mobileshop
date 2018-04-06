@@ -179,3 +179,5 @@ en:
   invalid_coupon: " must has expire date or limit import"
   coupon_manager: "Coupon manager"
   coupon_invalid: "Invalid coupon"
+  apply: "Apply"
+  discout: "Input discount"

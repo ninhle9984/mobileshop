@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   before_action :find_item, only: %i(update destroy)
   before_action :find_product, only: :create
+  before_action :find_coupon, only: :update
 
   def update
     return increase(item) if params[:method] == "line_items"
@@ -45,9 +46,8 @@ class LineItemsController < ApplicationController
   end
 
   def increase item
-    quantity = item.quantity + 1
-    item.update_attributes quantity: quantity
-    redirect_to cart
+    item.update_attributes quantity: item.quantity + 1
+    respond cart
   end
 
   def decrease item
@@ -55,6 +55,13 @@ class LineItemsController < ApplicationController
 
     return if quantity.zero?
     item.update_attributes quantity: quantity
-    redirect_to cart
+    respond cart
+  end
+
+  def respond cart
+    respond_to do |format|
+      format.html{redirect_to cart}
+      format.js
+    end
   end
 end

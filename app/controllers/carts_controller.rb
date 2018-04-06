@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   attr_reader :cart
 
   before_action :find_cart
+  before_action :find_coupon
 
   def show; end
 
