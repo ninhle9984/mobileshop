@@ -1,4 +1,27 @@
 <% provide :title, t("index") %>
+<div class="container">
+  <div class="row">
+    <div class="swiper-container">
+      <div class="features_items">
+        <h2 class="title text-center"><%= t "most_products" %></h2>
+      </div>
+      <div class="swiper-wrapper">
+        <% @popular_products.each do |product| %>
+          <div class="swiper-slide">
+            <%= link_to image_tag(product.image_url, class: "image-size"), product %>
+            <div class="productinfo text-center">
+              <h2><%= link_to product.name, product %></h2>
+              <p><b><%= number_to_currency product.price %></b></p>
+            </div>
+          </div>
+        <% end %>
+      </div><br />
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</div>
 <div class="promo-area">
   <div class="container">
     <div class="row">
@@ -31,10 +54,10 @@
 </div>
 <div class="container">
   <div class="row">
-    <%= render "sidebar", brands: @brands %>
-    <%= render "products/product", products: @products %>
+    <%= render "sidebar", brands: @supports.brands %>
+    <%= render "products/product", products: @supports.products %>
   </div>
 </div>
 <div class="panel-footer">
-  <center><%= will_paginate @products %></center>
+  <center><%= will_paginate @supports.products %></center>
 </div>

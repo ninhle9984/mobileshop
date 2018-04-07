@@ -16,10 +16,10 @@
               <th></th>
             </tr>
             <tr>
-              <td><%= line_item.order.name %></td>
-              <td><%= line_item.order.email %></td>
-              <td><%= line_item.order.address %></td>
-              <td><%= line_item.order.phone %></td>
+              <td><%= order.name %></td>
+              <td><%= order.email %></td>
+              <td><%= order.address %></td>
+              <td><%= order.phone %></td>
               <td></td>
             </tr>
             <tr>
@@ -31,21 +31,36 @@
             </tr>
             <% line_items.each do |line_item| %>
               <tr>
-                <td><%= link_to line_item.product.name, product_path(line_item.product) %></td>
+                <td><%= link_to line_item.product.name,
+                  product_path(line_item.product) %></td>
                 <td><%= line_item.quantity %></td>
                 <td><%= number_to_currency line_item.price %></td>
-                <td><%= number_to_currency line_item.total_price %></td>
+                <% if order.coupon_code %>
+                  <td><%= number_to_currency line_item.sale_price(coupon) %></td>
+                <% else %>
+                  <td><%= number_to_currency line_item.total_price %></td>
+                <% end %>
                 <td><%= l line_item.created_at %></td>
               </tr>
             <% end %>
-            <h3>
-              <%= t "total_price"%>:
-              <%= number_to_currency line_items.inject(0) {|sum,f| sum + f.total_price } %> |
-              <%= t "status" %>: <%= line_item.order.order_status %>
-              <% if order.processing? %>
-                | <%= link_to t("cancel"), order_path, method: :patch %>
-              <% end %>
-            </h3>
+            <center>
+              <h4>
+                <%= t "total_price"%>:
+                <% if order.coupon_code %>
+                  <b><%= number_to_currency line_items.
+                    inject(0) {|sum, f| sum + f.sale_price(coupon) } %></b> |
+                  <%= t "coupon" %>: <b><%= order.coupon_code %></b> -
+                    <b><%= coupon.percent %>%</b> |
+                <% else %>
+                  <b><%= number_to_currency line_items.
+                    inject(0) {|sum, f| sum + f.total_price } %> |</b>
+                <% end %>
+                <%= t "status" %>: <%= order.order_status %>
+                <% if order.processing? %>
+                  | <%= link_to t("cancel"), order_path(order), method: :patch %>
+                <% end %>
+              </h4>
+            </center>
           </table>
         </div>
       </div>
