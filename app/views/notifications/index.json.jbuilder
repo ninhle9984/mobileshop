@@ -3,7 +3,7 @@ json.notifications do
     json.id notify.id
     json.content t(notify.content)
     json.url notify.order_url
-    json.time notify.created_at.strftime("%H:%M /%d /%m/%Y")
+    json.time notify.created_at.strftime("%H:%M %d/%m/%Y")
     json.readed notify.readed
   end
 end
