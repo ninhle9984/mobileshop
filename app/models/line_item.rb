@@ -8,4 +8,12 @@ class LineItem < ApplicationRecord
   def total_price
     product.price * quantity
   end
+
+  def remain_price coupon
+    total_price * (100 - coupon.percent) / 100
+  end
+
+  def sale_price coupon
+    remain_price(coupon) * quantity
+  end
 end

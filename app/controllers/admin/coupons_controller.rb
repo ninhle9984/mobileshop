@@ -1,5 +1,5 @@
 module Admin
-  class CouponsController < ApplicationController
+  class CouponsController < Admin::BaseController
     before_action :find_coupon, only: %i(edit update destroy)
 
     def index
@@ -14,7 +14,7 @@ module Admin
       @coupon = Coupon.new coupon_params
 
       if coupon.save
-        flash[:success] = t "created"
+        flash[:success] = t "created_coupon"
         redirect_to admin_coupons_path
       else
         render :new
@@ -25,7 +25,7 @@ module Admin
 
     def update
       if coupon.update_attributes coupon_params
-        flash[:success] = t "updated"
+        flash[:success] = t "updated_coupon"
         redirect_to admin_coupons_path
       else
         render :edit
@@ -33,7 +33,7 @@ module Admin
     end
 
     def destroy
-      redirect_to admin_coupons_path if coupon.destroy
+      coupon.destroy
       unsuccess_destroy
     end
 
@@ -49,13 +49,13 @@ module Admin
       @coupon = Coupon.find_by id: params[:id]
 
       return if coupon
-      flash[:errors] = t "not_found"
+      flash[:errors] = t "not_found_coupon"
       redirect_to root_path
     end
 
     def unsuccess_destroy
-      flash[:danger] = t "not_exist"
-      redirect_to root_path
+      flash[:danger] = t "not_exist_coupon"
+      redirect_to admin_coupons_path
     end
   end
 end
