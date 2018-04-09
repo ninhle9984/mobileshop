@@ -1,5 +1,7 @@
 module Admin
   class BaseController < ApplicationController
+    layout "admin"
+
     before_action :admin_user
 
     def admin_user

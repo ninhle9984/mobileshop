@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :find_user, only: %i(edit show)
 
   def show
-    @orders = user.orders.desc.paginate page: params[:page]
+    @orders = user.orders.desc.paginate page: params[:page],
+      per_page: Settings.nine
   end
 
   def edit; end

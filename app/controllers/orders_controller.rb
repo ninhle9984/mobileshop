@@ -22,17 +22,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @line_items = order.line_items
+    @support_coupon = SupportCoupon.new order: order
     user_signed_in? ? current_order : redirect_to(root_path)
   end
 
   def edit
-    if order
-      @line_items = order_line_items
-      @line_item = order_line_items.first
-    else
-      redirect_to root_path
-    end
+    @support_coupon = SupportCoupon.new order: order
   end
 
   def update
@@ -48,10 +43,6 @@ class OrdersController < ApplicationController
   def current_order
     return if current_user.orders.find_by id: params[:id]
     redirect_to root_path
-  end
-
-  def order_line_items
-    order.line_items
   end
 
   def find_order_product_code
@@ -87,7 +78,7 @@ class OrdersController < ApplicationController
   def create_success
     Cart.destroy session[:cart_id]
     clear_session
-    redirect_to root_path
+    redirect_to order
     flash[:success] = current_user ? t("thank") : t("check")
   end
 
@@ -99,6 +90,6 @@ class OrdersController < ApplicationController
 
   def clear_session
     session.delete :coupon_code
-    session[:card_id] = nil
+    session[:cart_id] = nil
   end
 end

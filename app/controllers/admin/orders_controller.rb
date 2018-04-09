@@ -10,14 +10,12 @@ module Admin
     def show
       @line_items = order.line_items.desc.paginate page: params[:page],
         per_page: Settings.per_page
-      @line_item = LineItem.find_by order_id: params[:id]
+      @coupon = Coupon.find_by code: order.coupon_code
     end
 
     def edit; end
 
     def update
-      @order = Order.find_by id: params[:id]
-
       if order.update_attributes order_params
         flash[:success] = t "order_updated"
         redirect_to admin_orders_url

@@ -19,7 +19,15 @@
         <% end %>
       </div>
     </div>
-    <%= yield %>
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <%= render "layouts/header_admin" %>
+          <%= render "layouts/sidebar" %>
+          <%= yield %>
+        </div>
+      </div>
+    </section>
     <%= render "layouts/footer" %>
   </body>
 </html>
