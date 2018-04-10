@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.string "name"
     t.string "address"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.integer "order_status", default: 1
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.string "encrypted_password", default: "", null: false
     t.string "name"
     t.string "address"
-    t.integer "phone"
+    t.string "phone"
     t.boolean "admin"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

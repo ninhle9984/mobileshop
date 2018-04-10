@@ -1,11 +1,11 @@
 class SupportOrder
-  attr_reader :coupon
+  attr_reader :order
 
-  def initialize session
-    @coupon ||= Coupon.find_by code: session if session
+  def initialize args
+    @order = args[:order]
   end
 
-  def order
-    @order ||= Order.new
+  def find_coupon
+    Coupon.find_by code: order.coupon_code
   end
 end

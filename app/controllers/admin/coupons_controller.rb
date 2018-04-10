@@ -1,6 +1,6 @@
 module Admin
   class CouponsController < Admin::BaseController
-    before_action :find_coupon, only: %i(edit update destroy)
+    before_action :find_coupon, except: %i(index new create)
 
     def index
       @coupons = Coupon.desc.paginate page: params[:page]
@@ -20,6 +20,8 @@ module Admin
         render :new
       end
     end
+
+    def show; end
 
     def edit; end
 

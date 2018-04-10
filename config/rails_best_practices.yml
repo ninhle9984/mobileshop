@@ -27,7 +27,7 @@ RemoveUnusedMethodsInControllersCheck: { except_methods: ['CartsController#show'
   'LineItemsController#index', 'StaticPagesController#home',
   'RegistrationsController#sign_up_params',
   'RegistrationsController#account_update_params', 'SearchesController#index',
-  'NotificationsController#update'] }
+  'NotificationsController#update', 'RegistrationsController#update_resource'] }
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 RemoveUnusedMethodsInModelsCheck: { except_methods: ['Cart#total_price', 'LineItem#total_price',
   'Notification#execute_sql'] }
