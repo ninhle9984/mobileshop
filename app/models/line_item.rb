@@ -9,11 +9,13 @@ class LineItem < ApplicationRecord
     product.price * quantity
   end
 
-  def remain_price coupon
+  def remain_price
+    coupon = Coupon.find_by code: order.coupon_code
+    return total_price unless coupon
     total_price * (100 - coupon.percent) / 100
   end
 
-  def sale_price coupon
-    remain_price(coupon) * quantity
+  def sale_price
+    total_price - remain_price
   end
 end

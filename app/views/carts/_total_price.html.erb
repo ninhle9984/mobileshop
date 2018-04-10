@@ -16,7 +16,7 @@
         <td>
           <strong>
             <span class="amount" id="cart_price">
-              - <%= number_to_currency cart.sale_price coupon %>
+              - <%= number_to_currency cart.sale_price(coupon) %>
             </span>
           </strong>
         </td>
@@ -26,7 +26,7 @@
         <td>
           <strong>
             <span class="amount" id="cart_price">
-              <%= number_to_currency cart.remain_price coupon %>
+              <%= number_to_currency cart.remain_price(coupon) %>
             </span>
           </strong>
         </td>
