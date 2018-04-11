@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   before_action :find_coupon, only: %i(new create)
 
   def new
-    @support_order = SupportOrder.new session[:coupon_code]
+    @support_order = SupportOrder.new order:
+      Order.new(coupon_code: session[:coupon_code])
   end
 
   def create
@@ -73,6 +74,7 @@ class OrdersController < ApplicationController
                Order.new order_params
              end
     order.coupon_code = session[:coupon_code]
+    @support_order = SupportOrder.new order: order
   end
 
   def create_success

@@ -4,11 +4,7 @@ class Order < ApplicationRecord
   belongs_to :user, optional: true
   has_many :line_items, dependent: :destroy
 
-  enum order_status: {
-    cancelled: 0,
-    processing: 1,
-    delivered: 2
-  }
+  enum order_status: %i(cancelled processing delivered)
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -1,6 +1,7 @@
 module Admin
   class OrdersController < Admin::BaseController
-    before_action :find_order, only: %i(show edit update destroy)
+    before_action :find_order, except: %i(index new create)
+    before_action :order_statuses, only: :edit
 
     def index
       @orders = Order.desc.paginate page: params[:page],
@@ -8,9 +9,7 @@ module Admin
     end
 
     def show
-      @line_items = order.line_items.desc.paginate page: params[:page],
-        per_page: Settings.per_page
-      @coupon = Coupon.find_by code: order.coupon_code
+      @support_coupon = SupportCoupon.new order: order
     end
 
     def edit; end
@@ -28,6 +27,12 @@ module Admin
       order.destroy
       flash[:success] = t "order_deleted"
       redirect_to admin_orders_url
+    end
+
+    def order_statuses
+      @order_statuses = Order.order_statuses.map do |key, _value|
+        [t(key.to_s), key]
+      end
     end
 
     private

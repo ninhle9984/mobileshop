@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def handle_create_comment_failed
-    flash[:warning] = t "comment_created"
+    flash[:warning] = t "comment_failed"
     redirect_to product
   end
 

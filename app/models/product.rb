@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   scope :most_bought, (lambda do |_|
     joins("INNER JOIN products ON products.id = product_id")
     .from(LineItem.select("product_id, COUNT(product_id) as count")
-    .where.not(order_id: nil)
-    .group("product_id").order("product_id DESC").limit(10))
+    .where.not(order_id: nil).group("product_id")
+    .order("count DESC").limit(Settings.ten))
   end)
 end
