@@ -1,7 +1,7 @@
 <div class="header-area navbar-fixed-top">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="user-menu">
           <ul>
             <li>
@@ -31,6 +31,28 @@
                   <i class="fa fa-user"></i> <%= t("profile_order") %>
                 <% end %>
               </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="header-right">
+          <ul class="list-unstyled list-inline">
+            <% if cart_size %>
+              <%= link_to cart_path(session[:cart_id]) do %>
+                <%= t "cart" %>
+                <i class="fa fa-shopping-cart"></i>:
+                <span id="cart_size"><%= cart_size %></span>
+              <% end %>
+            <% end %>
+            <li>
+              <%= form_with url: search_path, local: true, method: :get,
+                html: {class: "fom-inline my-2 my-lg-2"}, id: "search" do |f| %>
+                <%= f.text_field :q, data: {behavior: "autocomplete"},
+                  class: "form-control mr-sm-2" %>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
               <li>
                 <%= link_to edit_user_registration_path do %>
                   <i class="fa fa-user"></i> <%= t("edit_profile") %>
@@ -53,26 +75,6 @@
                 <% end %>
               </li>
             <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="header-right">
-          <ul class="list-unstyled list-inline">
-            <% if cart_size %>
-              <%= link_to cart_path(session[:cart_id]) do %>
-                <%= t "cart" %>
-                <i class="fa fa-shopping-cart"></i>:
-                <span id="cart_size"><%= cart_size %></span>
-              <% end %>
-            <% end %>
-            <li>
-              <%= form_with url: search_path, local: true, method: :get,
-                html: {class: "fom-inline my-2 my-lg-2"}, id: "search" do |f| %>
-                <%= f.text_field :q, data: {behavior: "autocomplete"},
-                  class: "form-control mr-sm-2" %>
-              <% end %>
-            </li>
           </ul>
         </div>
       </div>
