@@ -280,3 +280,5 @@ vi:
   confirm_order: "Xác nhận mua đơn hàng này?"
   no_coupon: "Không có"
   discount: "Đã giảm"
+  search_result: "Tìm kiếm"
+  mark_as_read: "Đánh dấu đã xem"

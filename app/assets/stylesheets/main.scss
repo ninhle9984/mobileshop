@@ -840,8 +840,9 @@ th {
 }
 
 .scrollable-menu {
-  max-height: 250px;
-  overflow: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .notify {
@@ -871,4 +872,75 @@ th {
   border-radius: 4px;
   margin-bottom: 20px;
   padding: 15px;
+}
+
+.nav .message-nav {
+  float: right;
+  margin-right: 20px;
+
+  a {
+    background-color: $white;
+    color: $black;
+  }
+}
+
+.dropdown-menu {
+  background: $white;
+  border-radius: 0;
+  display: none;
+  min-width: 200px;
+  position: absolute;
+  width: 320px;
+  z-index: 100;
+
+  .notification-list {
+    .notification-item {
+      border-top: solid 1px $list-color;
+      padding-left: 25px;
+      padding-top: 2px;
+      width: 320px;
+    }
+
+    .notification-anchor {
+      padding: 0;
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.notification-title {
+  color: $black;
+  font-size: 15px;
+  font-weight: 200;
+  margin-left: 165px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.notification-anchor:hover {
+  text-decoration: none;
+}
+
+.notification-list { 
+    .notification-anchor {
+      .notification-type {
+        color: $red;
+        font-size: 15px;
+    }
+  }
+}
+
+.dropdown i:hover {
+  color: $red;
+  cursor: pointer;
+}
+
+#mark:hover {
+  cursor: pointer;
+  color: $red;
 }

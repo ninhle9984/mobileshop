@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function () {
   $('#notify').on('click', function() {
     $.ajax({
-      url: '/notifications/update',
+      url: '/admin/notifications/update',
       type: 'PUT',
       dataType: 'JSON',
       success: function() {
@@ -10,7 +10,14 @@ document.addEventListener('turbolinks:load', function () {
     });
   });
 
-  $('#coupon-input').on('keydown', function(e) {
+  $('#search').on('keydown', function (e) {
+    var search_input = $('#text_input').val();
+    if (e.keyCode == 13 && search_input.length === 0) {
+      e.preventDefault();
+    }
+  });
+
+  $('#coupon-input').on('keyup', function(e) {
     var get_coupon_input = $('#coupon-input').val();
     var locale;
 
