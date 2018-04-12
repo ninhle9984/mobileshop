@@ -11,13 +11,16 @@
             </li>
             <% if user_signed_in? %>
               <% if current_user && current_user.admin? %>
-                <li class="dropdown">
-                  <%= button_tag "#", class: "btn btn-primary dropdown-toggle",
-                    data: {toggle: "dropdown"}, id: "notify" do %>
-                    <i class="fa fa-bell"></i> <span id="notify-count">0</span>
-                  <% end %>
-                  <ul class="dropdown-menu scrollable-menu" role="menu"
-                    id="notify-list">
+                <li class="message-nav dropdown">
+                  <i class="fa fa-bell-o" data-toggle="dropdown" id="notify">
+                    <span class="badge" id="notify-count"></span>
+                  </i>
+                  <ul class="dropdown-menu dropdown-menu-left">
+                    <li class="notification-title">
+                      <span><p class="right" id="mark"><%= t("mark_as_read")%></p></span>
+                    </li>
+                    <ul class="notification-list scrollable-menu" id="notify-list">
+                    </ul>
                   </ul>
                 </li>
                 <li>
@@ -49,7 +52,7 @@
               <%= form_with url: search_path, local: true, method: :get,
                 html: {class: "fom-inline my-2 my-lg-2"}, id: "search" do |f| %>
                 <%= f.text_field :q, data: {behavior: "autocomplete"},
-                  class: "form-control mr-sm-2" %>
+                  class: "form-control mr-sm-2", id: "text_input" %>
               <% end %>
             </li>
             <% if user_signed_in? %>

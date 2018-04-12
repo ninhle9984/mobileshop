@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :notifications, only: %i(index update)
   scope "(:locale)", locale: /en|vi/ do
     resources :discounts, only: :update
     resources :carts, only: %i(show destroy)
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
       resources :orders
       resources :users
       resources :static_pages, only: %i(index)
+      resources :notifications, only: %i(index update)
     end
     root "static_pages#index"
     resources :orders, except: :destroy
