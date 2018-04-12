@@ -22,10 +22,11 @@ class Cart < ApplicationRecord
   end
 
   def remain_price coupon
+    return total_price unless coupon
     total_price * (100 - coupon.percent) / 100
   end
 
   def sale_price coupon
-    total_price * coupon.percent / 100
+    total_price - remain_price(coupon)
   end
 end
