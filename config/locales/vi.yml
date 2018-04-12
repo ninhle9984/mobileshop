@@ -278,3 +278,5 @@ vi:
     show:
       invalid: "Giỏ hàng không tồn tại"
   confirm_order: "Xác nhận mua đơn hàng này?"
+  no_coupon: "Không có mã giảm giá"
+  discount: "Đã giảm"
