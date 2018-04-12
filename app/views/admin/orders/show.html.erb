@@ -20,9 +20,9 @@
             <%= number_to_currency @support_coupon.show_price("sale") %>
           </td>
           <td>
-            <% if order.coupon_code %>
-              <%= order.coupon_code %> -
-              <%= support_coupon.coupon.percent %>%
+            <% if @order.coupon_code %>
+              <%= @order.coupon_code %> -
+              <%= @support_coupon.coupon.percent %>%
             <% else %>
               <%= t "no_coupon" %>
             <% end %>
