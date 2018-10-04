@@ -16,6 +16,7 @@ end
  gem "jbuilder", "~> 2.5"
  gem "font-awesome-rails"
  gem "devise"
+ gem "mysql2", "0.4.2"
  gem "config"
  gem "ckeditor"
  gem "jquery-rails"

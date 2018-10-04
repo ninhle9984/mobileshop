@@ -12,20 +12,20 @@
 
 ActiveRecord::Schema.define(version: 20180403162659) do
 
-  create_table "brands", force: :cascade do |t|
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts", force: :cascade do |t|
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "coupons", force: :cascade do |t|
+  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "code"
     t.integer "percent"
     t.datetime "expire"
@@ -44,18 +44,18 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["code"], name: "index_coupons_on_code", unique: true
   end
 
-  create_table "item_photos", force: :cascade do |t|
+  create_table "item_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "product_id"
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "cart_id"
+  create_table "line_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "product_id"
+    t.bigint "cart_id"
     t.integer "quantity", default: 1
-    t.integer "order_id"
+    t.bigint "order_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
     t.datetime "read_at"
     t.string "order_url"
@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "address"
     t.string "email"
     t.string "phone"
     t.integer "order_status", default: 1
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "product_code"
@@ -87,19 +87,19 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean "available"
     t.string "name"
     t.text "description"
     t.string "image"
     t.integer "price"
-    t.integer "brand_id"
+    t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name"
@@ -120,4 +120,11 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands"
 end
