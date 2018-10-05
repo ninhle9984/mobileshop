@@ -10,6 +10,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/shared/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -29,3 +30,5 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+/public/assets/*

@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'fa2e4d92d7d1eadaf606fe7bdfeaa1bdbfdb0adfbe3209025ce6640d114004a243a1deb8418b8f916149f22c008b587ed6b70a60db52defe57177d5aa8bac824'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -29,6 +29,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  config.secret_key = '6d460893aa9eda2018975ee2bc991c07f667de8f1258ef101b56f50761fade0205c289e3800ac8e434682ab5b8b7c1f1c0b032917bd02a980fa3cdb252e465cc'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
