@@ -159,7 +159,7 @@ Devise.setup do |config|
   # secure: true in order to force SSL only cookies.
   # config.rememberable_options = {}
 
-  config.secret_key = ENV["devise_secret"]
+  config.secret_key = Figaro.env.devise_secret_key if Rails.env.production?
   # ==> Configuration for :validatable
   # Range for password length.
   config.password_length = 6..128
