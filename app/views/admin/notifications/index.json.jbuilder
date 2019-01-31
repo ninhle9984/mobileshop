@@ -9,4 +9,4 @@ json.notifications do
 end
 
 json.unread @unread_messages.size
-json.name current_user.name
+json.name current_user&.name

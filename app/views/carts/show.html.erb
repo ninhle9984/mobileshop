@@ -1,7 +1,7 @@
 <% provide :title, t("cart") %>
 <div class="container">
   <div class="row">
-    <% if @cart.line_items.empty? %>
+    <% if @cart.blank? || @cart.line_items.blank? %>
       <div class="fixed-footer-bottom">
         <div class="col-md-12">
           <div class="features-items">
@@ -28,7 +28,7 @@
           <%= t "checkout" %>
         <% end %>
         <br /><br />
-        <%= link_to @cart, method: :delete, data: {confirm: t("are_you_sure")},
+        <%= link_to cart_path, method: :delete, data: {confirm: t("are_you_sure")},
           class: "submit" do %>
           <%= t "remove_all_product" %>
         <% end %>

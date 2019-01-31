@@ -15,10 +15,5 @@ class CartsController < ApplicationController
 
   def find_cart
     @cart = Cart.find_by id: params[:id]
-    current_cart = Cart.find_by id: session[:cart_id]
-
-    return if cart && cart.current_cart?(current_cart)
-    redirect_to root_path
-    flash[:danger] = t ".invalid"
   end
 end
