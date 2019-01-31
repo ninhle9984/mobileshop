@@ -41,12 +41,10 @@
       <div class="col-md-6">
         <div class="header-right">
           <ul class="list-unstyled list-inline">
-            <% if cart_size %>
-              <%= link_to cart_path(session[:cart_id]) do %>
-                <%= t "cart" %>
-                <i class="fa fa-shopping-cart"></i>:
-                <span id="cart_size"><%= cart_size %></span>
-              <% end %>
+            <%= link_to cart_path do %>
+              <%= t "cart" %>
+              <i class="fa fa-shopping-cart"></i>:
+              <span id="cart_size"><%= cart_size || 0 %></span>
             <% end %>
             <li>
               <%= form_with url: search_path, local: true, method: :get,
