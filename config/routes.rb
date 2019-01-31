@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     resources :discounts, only: :update
-    resources :carts, only: %i(show destroy)
+    resource :cart, only: %i(show destroy)
     resources :line_items
     devise_for :users, controllers: { registrations: "registrations" }
     resources :users, only: %i(show) do

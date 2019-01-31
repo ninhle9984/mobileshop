@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  before_action :current_cart, only: :create
   before_action :find_item, only: %i(update destroy)
   before_action :find_product, only: :create
   before_action :find_coupon, only: :update

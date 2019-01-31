@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180403162659) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20180403162659) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,10 +55,10 @@ ActiveRecord::Schema.define(version: 20180403162659) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "cart_id"
+    t.bigint "product_id"
+    t.bigint "cart_id"
     t.integer "quantity", default: 1
-    t.integer "order_id"
+    t.bigint "order_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.string "email"
     t.string "phone"
     t.integer "order_status", default: 1
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "product_code"
@@ -93,7 +96,7 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.text "description"
     t.string "image"
     t.integer "price"
-    t.integer "brand_id"
+    t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
@@ -120,4 +123,11 @@ ActiveRecord::Schema.define(version: 20180403162659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands"
 end
