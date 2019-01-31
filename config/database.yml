@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: 5432
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mobile_shop_development
+
+test:
+  <<: *default
+  database: mobile_shop_test
+
+staging:
+  <<: *default
+  database: mobile_shop
+
+production:
+  <<: *default
+  database: mobile_shop
+  password: <%= ENV['DATABASE_PASSWORD'] %>
