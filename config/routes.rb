@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     post "orders/new", to: "orders#create"
     get :search, to: "searches#index"
     resources :products
-    mount ActionCable.server, at: "/cable"
+  #  mount ActionCable.server, at: "/cable"
   end
 end
