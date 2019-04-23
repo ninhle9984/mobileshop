@@ -30,6 +30,7 @@ end
  gem "hirb"
  gem "momentjs-rails"
  gem "rails_bootstrap_sortable"
+ gem "mysql2", "~> 0.3.18"
 
 group :development, :test do
  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
